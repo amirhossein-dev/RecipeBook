@@ -1,0 +1,23 @@
+<a
+  style="text-decoration: none; cursor: pointer; color: black"
+  [routerLink]="[index]"
+>
+  <div
+    class="d-flex justify-content-between bg-light shadow my-3"
+    routerLinkActive="selected"
+  >
+    <div class="py-2 px-2">
+      <h4 class="list-group-item-heading">{{ recipe.name }}</h4>
+      <p class="list-group-item-text">{{ recipe.desceription }}</p>
+    </div>
+    <div class="pt-3 px-2">
+      <img
+        [src]="recipe.imagePath"
+        src=""
+        alt="{{ recipe.name }}"
+        class="img-fluid border rounded-2"
+        style="max-height: 50px"
+      />
+    </div>
+  </div>
+</a>

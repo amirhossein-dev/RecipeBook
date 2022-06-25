@@ -1,0 +1,74 @@
+<nav class="navbar navbar-expand-lg navbar-light shadow bg-light mb-3">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/#">کتاب آشپزی</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item" *ngIf="isAuthenticated">
+          <a
+            class="nav-link"
+            routerLinkActive="active-custom"
+            [routerLink]="['/recipes']"
+            >دستورهای پخت
+          </a>
+        </li>
+        <li class="nav-item" *ngIf="!isAuthenticated">
+          <a
+            class="nav-link"
+            routerLinkActive="active-custom"
+            [routerLink]="['/auth']"
+            >عضویت</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLinkActive="active-custom"
+            [routerLink]="['/shopping-list']"
+            >لیست خرید</a
+          >
+        </li>
+      </ul>
+    </div>
+    <ul class="navbar-nav">
+      <li
+        class="nav-item ms-auto"
+        style="cursor: pointer"
+        *ngIf="isAuthenticated"
+      >
+        <a class="nav-link text-decoration-custom" (click)="onLogout()"
+          >خروج از حساب کاربری</a
+        >
+      </li>
+    </ul>
+    <div class="dropdown" *ngIf="isAuthenticated">
+      <button
+        class="btn btn-outilne-secondary dropdown-toggle mx-4"
+        type="button"
+        id="dropdownMenuButton1"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      >
+        مدیریت
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        <a class="dropdown-item" style="cursor: pointer" (click)="onSaveData()"
+          >ثبت تغییرات</a
+        >
+        <a class="dropdown-item" style="cursor: pointer" (click)="onFetchData()"
+          >دریافت اطلاعات</a
+        >
+      </ul>
+    </div>
+  </div>
+</nav>

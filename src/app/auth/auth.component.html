@@ -1,0 +1,63 @@
+<ng-template appPlaceholder></ng-template>
+<div class="row justify-content-center">
+  <div class="col-xs-12 col-md-6">
+    <!-- <div class="alert alert-danger" *ngIf="error">
+      <p>{{ error }}</p>
+    </div> -->
+    <!-- <app-alert
+      [message]="error"
+      *ngIf="error"
+      (close)="onHanldeError()"
+    ></app-alert> -->
+
+    <div *ngIf="isLoading">
+      <app-loading-spinner></app-loading-spinner>
+    </div>
+    <form
+      #authForm="ngForm"
+      (ngSubmit)="onAuthFormSubmit(authForm)"
+      *ngIf="!isLoading"
+    >
+      <div class="mb-3">
+        <label for="email" class="form-label">آدرس ایمیل</label>
+        <input
+          type="email"
+          class="form-control"
+          id="email"
+          aria-describedby="emailHelp"
+          ngModel
+          name="email"
+          required
+          email
+        />
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">پسورد</label>
+        <input
+          type="password"
+          class="form-control"
+          id="password"
+          ngModel
+          name="password"
+          required
+          minlength="6"
+        />
+      </div>
+      <div id="emailHelp" class="form-text g-3 my-2">
+        لطفا برای تجربه ی کاربری بهتر و استفاده از وبسایت فیلترشکن خود را روشن
+        کنید
+      </div>
+      <button
+        type="submit"
+        class="btn btn-primary me-2"
+        [disabled]="!authForm.valid"
+      >
+        {{ isLoginMode ? "ورود" : "ثبت نام" }}
+      </button>
+
+      <button type="button" class="btn btn-primary" (click)="onSwitchMode()">
+        تغییر به {{ isLoginMode ? " ثبت نام" : "ورود" }}
+      </button>
+    </form>
+  </div>
+</div>
